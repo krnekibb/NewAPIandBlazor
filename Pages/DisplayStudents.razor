@@ -1,0 +1,39 @@
+﻿@page "/displaystudents"
+@inherits DisplayStudentsBase
+
+<h3>DisplayStudents</h3>
+
+@if (Enrollments == null)
+{
+    <p>Loading ...</p>
+}
+else
+{
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Enrollment Date</td>
+                    <td>Grade</td>
+                    <td>Title</td>
+                    <td>Credits</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var e in Enrollments)
+                {
+                <tr>
+                    <td>@e.Student.FirstName</td>
+                    <td>@e.Student.LastName</td>
+                    <td>@e.Student.EnrollmentDate</td>
+                    <td>@e.Grade</td>
+                    <td>@e.Course.Title</td>
+                    <td>@e.Course.Credits</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

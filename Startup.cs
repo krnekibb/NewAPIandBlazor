@@ -32,7 +32,6 @@ namespace BlazorWebServer
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
 
-            services.AddSingleton<HttpClient>();
             services.AddHttpClient<IStudentService, StudentService>(client =>
             {
                 client.BaseAddress = new Uri("https://localhost:58686/");
@@ -46,6 +45,11 @@ namespace BlazorWebServer
             services.AddHttpClient<IEnrollmentService, EnrollmentService>(client =>
             {
                 client.BaseAddress = new Uri("https://localhost:58686/");
+            });
+
+            services.AddServerSideBlazor().AddCircuitOptions(options =>
+            {
+                options.DetailedErrors = true;
             });
         }
 
@@ -70,6 +74,7 @@ namespace BlazorWebServer
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });

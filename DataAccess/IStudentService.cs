@@ -7,5 +7,7 @@ namespace BlazorWebServer.DataAccess
     public interface IStudentService
     {
         Task<IEnumerable<Student>> GetAllStudents();
+
+        Task<Student> GetStudent(int id);
     }
 }

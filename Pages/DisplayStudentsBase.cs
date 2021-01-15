@@ -12,21 +12,23 @@ namespace BlazorWebServer.Pages
     {
         [Inject]
         public IStudentService StudentService { get; set; }
+
+        [Inject]
         public ICourseService CourseService { get; set; }
+
+        [Inject]
         public IEnrollmentService EnrollmentService { get; set; }
 
 
         public List<Student> Students { get; set; }
-        public List<Course> Courses { get; set; }
+        public List<Course> Courses { get; set; } = new List<Course>();
 
-        public List<Enrollment> Enrollments { get; set; }
+        public List<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
 
         protected override async Task OnInitializedAsync()
         {
-            if(Enrollments == null)
-            { 
-                Enrollments = (await EnrollmentService.GetAllEnrollments()).ToList();
-            }
+            Students = (await StudentService.GetAllStudents()).ToList();
+            Courses = (await CourseService.GetAllCourses()).ToList();
             Enrollments = (await EnrollmentService.GetAllEnrollments()).ToList();
         }
     }

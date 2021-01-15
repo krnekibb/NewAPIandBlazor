@@ -3,7 +3,7 @@
 
 <h3>DisplayStudents</h3>
 
-@if (Enrollments == null)
+@if (Students == null)
 {
     <p>Loading ...</p>
 }
@@ -13,27 +13,79 @@ else
         <table class="table">
             <thead>
                 <tr>
-                    <td>First Name</td>
-                    <td>Last Name</td>
-                    <td>Enrollment Date</td>
-                    <td>Grade</td>
-                    <td>Title</td>
-                    <td>Credits</td>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Enrollment Date</th>
+                    <th>Student details</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var e in Enrollments)
+                @foreach (var student in Students)
                 {
-                <tr>
-                    <td>@e.Student.FirstName</td>
-                    <td>@e.Student.LastName</td>
-                    <td>@e.Student.EnrollmentDate</td>
-                    <td>@e.Grade</td>
-                    <td>@e.Course.Title</td>
-                    <td>@e.Course.Credits</td>
-                </tr>
+                    <tr>
+                        <td>@student.FirstName</td>
+                        <td>@student.LastName</td>
+                        <td>@student.EnrollmentDate</td>
+                        <td><a href="@($"studentdetails/{student.StudentId}")" class="btn btn-primary m-1">View Details</a></td>
+                    </tr>
                 }
             </tbody>
         </table>
     </div>
+
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Credits</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var course in Courses)
+                {
+                    <tr>
+                        <td>@course.Title</td>
+                        <td>@course.Credits</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+    @if (Enrollments == null)
+    {
+        <p>Loading ...</p>
+    }
+    else
+    {
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Enrollment Date</th>
+                        <th>Grade</th>
+                        <th>Course Title</th>
+                        <th>Credits</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Enrollments)
+                    {
+                        <tr>
+                            <td>@(item.Student.FirstName == null ? "#N/A" : item.Student.FirstName)</td>
+                            <td>@(item.Student.LastName == null ? "#N/A" : item.Student.LastName)</td>
+                            <td>@item.Student.EnrollmentDate</td>
+                            <td>@(item.Grade == null ? "#N/A" : item.Grade)</td>
+                            <td>@(item.Course.Title == null ? "#N/A" : item.Course.Title)</td>
+                            <td>@item.Course.Credits</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
 }

@@ -24,20 +24,28 @@ else
                 </tr>
             </thead>
             <tbody>
+                @foreach (var item in Student)
+                {
                 <tr>
-                    <td>@Student.FirstName</td>
-                    <td>@Student.LastName</td>
-                    <td>@Student.EnrollmentDate</td>
-                    @foreach (var item in Enrollments)
-                    {
-                        <tr>
-                            <td>@item.Course.Title</td>
-                            <td>@item.Grade</td>
-                            <td>@item.Course.Credits</td>
-                        </tr>
-                    }
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.EnrollmentDate</td>
+                    <td>@item.Enrollments</td>
+                </tr>
+                
+            }
+                    @*<td>@Student.FirstName</td>
+                <td>@Student.LastName</td>
+                <td>@Student.EnrollmentDate</td>
+                @foreach (var item in Student.Enrollments)
+                {
+                    <tr>
+                        <td>@item.Course.Title</td>
+                        <td>@(item.Grade == null ? "#N/A" : item.Grade)</td>
+                        <td>@item.Course.Credits</td>
                     </tr>
+                }*@
                 </tbody>
             </table>
-        </div>
-    }
+    </div>
+}

@@ -16,17 +16,17 @@ namespace BlazorWebServer.Pages
         [Inject]
         public IStudentService StudentService { get; set; }
 
-        public Student Student { get; set; } = new Student();
-        public List<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
+        public List<Student> Student { get; set; }
+        //public List<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
 
         [Parameter]
         public string Id { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            Id = Id ?? "5";
-            Student = await StudentService.GetStudent(int.Parse(Id));
-            Enrollments = (await EnrollmentService.GetEnrollmentBySID(int.Parse(Id))).ToList();
+            Id = Id ?? "1";
+            Student = (await StudentService.GetStudent(int.Parse(Id))).ToList();
+            //Enrollments = (await EnrollmentService.GetEnrollmentBySID(int.Parse(Id))).ToList();
         }
     }
 }

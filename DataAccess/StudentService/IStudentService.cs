@@ -8,6 +8,8 @@ namespace BlazorWebServer.DataAccess
     {
         Task<IEnumerable<Student>> GetAllStudents();
 
-        Task<Student> GetStudent(int id);
+        //Task<Student> GetStudent(int id);
+
+        Task<IEnumerable<Student>> GetStudent(int id);
     }
 }

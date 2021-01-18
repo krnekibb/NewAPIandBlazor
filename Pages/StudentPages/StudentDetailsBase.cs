@@ -24,7 +24,7 @@ namespace BlazorWebServer.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            Id = Id ?? "5";
+            Id = Id ?? "1";
             Student = await StudentService.GetStudent(int.Parse(Id));
             Enrollments = (await EnrollmentService.GetEnrollmentBySID(int.Parse(Id))).ToList();
         }

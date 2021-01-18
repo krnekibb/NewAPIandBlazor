@@ -21,9 +21,8 @@ namespace BlazorWebServer.Pages
 
 
         public List<Student> Students { get; set; }
-        public List<Course> Courses { get; set; } = new List<Course>();
-
-        public List<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
+        public List<Course> Courses { get; set; }
+        public List<Enrollment> Enrollments { get; set; }
 
         protected override async Task OnInitializedAsync()
         {

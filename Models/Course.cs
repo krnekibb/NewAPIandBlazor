@@ -15,6 +15,6 @@ namespace BlazorWebServer.Models
         public int Credits { get; set; }
 
         [JsonIgnore]
-        public List<Enrollment> Enrollments { get; set; }
+        public ICollection<Enrollment> Enrollments { get; set; }
     }
 }

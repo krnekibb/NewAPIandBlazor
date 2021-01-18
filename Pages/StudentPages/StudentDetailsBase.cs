@@ -16,8 +16,8 @@ namespace BlazorWebServer.Pages
         [Inject]
         public IStudentService StudentService { get; set; }
 
-        public Student Student { get; set; } = new Student();
-        public List<Enrollment> Enrollments { get; set; } = new List<Enrollment>();
+        public Student Student { get; set; }
+        public List<Enrollment> Enrollments { get; set; }
 
         [Parameter]
         public string Id { get; set; }

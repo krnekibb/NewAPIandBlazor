@@ -24,11 +24,18 @@ else
             <tbody>
                 @foreach (var item in Student)
                 {
-                    <tr>
-                        <td>@item.FirstName</td>
-                        <td>@item.LastName</td>
-                        <td>@item.EnrollmentDate</td>
-                    </tr>
+                <tr>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.EnrollmentDate</td>
+                    @foreach (var innerItem in Enrollments)
+                    {
+                <tr>
+                    <td>@innerItem.Course.Title</td>
+                    <td>@innerItem.Grade</td>
+                </tr>
+                    }
+                </tr>
                 }
             </tbody>
         </table>

@@ -24,7 +24,17 @@ namespace BlazorWebServer.DataAccess
 
         public async Task<IEnumerable<Enrollment>> GetEnrollmentBySID(int id)
         {
-            return await httpClient.GetJsonAsync<Enrollment[]>($"api/Enrollment/{id}");
+            return await httpClient.GetJsonAsync<Enrollment[]>($"api/Enrollment/allEnrollmentsStudentId/{id}");
+        }
+
+        public async Task<Enrollment> GetSingleEnrollmentBySID(int id)
+        {
+            return await httpClient.GetJsonAsync<Enrollment>($"api/Enrollment/studentId/{id}");
+        }
+
+        public async Task<Enrollment> CreateEnrollment(Enrollment newEnrollment)
+        {
+            return await httpClient.PostJsonAsync<Enrollment>("api/Enrollment", newEnrollment);
         }
     }
 }

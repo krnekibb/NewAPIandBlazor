@@ -17,6 +17,6 @@ namespace BlazorWebServer.Models
         public DateTime EnrollmentDate { get; set; }
 
         [JsonIgnore]
-        public ICollection<Enrollment> Enrollments { get; set; }
+        public virtual ICollection<Enrollment> Enrollments { get; set; }
     }
 }

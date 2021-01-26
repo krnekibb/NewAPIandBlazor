@@ -5,45 +5,42 @@
 
 <h3>StudentDetails</h3>
 
-@*@if (Student == null)
-{
-    <p>Loading ...</p>
-}
-else
-{
-    <div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Enrollment Date</th>
-                    <th>All enrollments</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Student)
-                {
-                <tr>
-                    <td>@item.FirstName</td>
-                    <td>@item.LastName</td>
-                    <td>@item.EnrollmentDate</td>
-                    @foreach (var innerItem in Enrollments)
-                    {
-                <tr>
-                    <td>@innerItem.Course.Title</td>
-                    <td>@innerItem.Grade</td>
-                </tr>
-                    }
-                </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-}*@
+<div>
+    @if (Student == null)
+        {
+            <p>Loading ...</p>
+        }
+        else
+        {
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Enrollment Date</th>
+                            <th>All enrollments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Student.FirstName</td>
+                            <td>@Student.LastName</td>
+                            <td>@Student.EnrollmentDate</td>
+                            @foreach (var i in Student.Enrollments)
+                            {
+                                <td>@i.Course.Title</td>
+                                <td>@i.Grade</td>
+                            }
+                        </tr> 
+                    </tbody>
+                </table>
+            </div>
+        }
+</div>
 
-
-@if (Student == null)
+<div>
+    @if (Student == null)
     {
         <p>Loading ...</p>
     }
@@ -57,7 +54,7 @@ else
                         <th>Last Name</th>
                         <th>Enrollment Date</th>
                         <th>Enrollments</th>
-                    </tr>    
+                    </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Enrollments)
@@ -74,3 +71,4 @@ else
             </table>
         </div>
     }
+</div>

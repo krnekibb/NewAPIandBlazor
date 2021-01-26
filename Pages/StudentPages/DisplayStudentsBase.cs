@@ -19,13 +19,18 @@ namespace BlazorWebServer.Pages
         [Inject]
         public IEnrollmentService EnrollmentService { get; set; }
 
-
+        [Parameter]
+        public string Id { get; set; }
         public List<Student> Students { get; set; }
+
+        public Student Student { get; set; }
         public List<Course> Courses { get; set; }
         public List<Enrollment> Enrollments { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
+            Id = Id ?? "1";
+            Student = await StudentService.GetStudent(int.Parse(Id));
             Students = (await StudentService.GetAllStudents()).ToList();
             Courses = (await CourseService.GetAllCourses()).ToList();
             Enrollments = (await EnrollmentService.GetAllEnrollments()).ToList();

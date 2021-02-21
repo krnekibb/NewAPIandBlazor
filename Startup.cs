@@ -32,19 +32,14 @@ namespace BlazorWebServer
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
 
-            services.AddHttpClient<IStudentService, StudentService>(client =>
+            services.AddHttpClient<IAuthorService, AuthorService>(client =>
             {
-                client.BaseAddress = new Uri("https://localhost:58686/");
+                client.BaseAddress = new Uri("https://localhost:5001/");
             });
 
-            services.AddHttpClient<ICourseService, CourseService>(client =>
+            services.AddHttpClient<IBookService, BookService>(client =>
             {
-                client.BaseAddress = new Uri("https://localhost:58686/");
-            });
-
-            services.AddHttpClient<IEnrollmentService, EnrollmentService>(client =>
-            {
-                client.BaseAddress = new Uri("https://localhost:58686/");
+                client.BaseAddress = new Uri("https://localhost:5001/");
             });
 
             services.AddServerSideBlazor().AddCircuitOptions(options =>

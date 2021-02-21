@@ -1,11 +1,13 @@
 ﻿using BlazorWebServer.Models;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BlazorWebServer.DataAccess
 {
-    public interface ICourseService
+    public interface IBookService
     {
-        Task<IEnumerable<Course>> GetAllCourses();
+        Task<IEnumerable<Book>> GetAllBooks();
     }
 }

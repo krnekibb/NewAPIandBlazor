@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace BlazorWebServer.DataAccess
 {
-    public class CourseService : ICourseService
+    public class BookService : IBookService
     {
         private readonly HttpClient httpClient;
 
-        public CourseService(HttpClient httpClient)
+        public BookService(HttpClient httpClient)
         {
             this.httpClient = httpClient;
         }
 
-        public async Task<IEnumerable<Course>> GetAllCourses()
+        public async Task<IEnumerable<Book>> GetAllBooks()
         {
-            return await httpClient.GetJsonAsync<Course[]>("api/Course");
+            return await httpClient.GetJsonAsync<Book[]>("api/Books");
         }
     }
 }

@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 
 namespace BlazorWebServer.Models
 {
-    public class Student
+    public class Author
     {
-        public int StudentId { get; set; }
+        public int Id { get; set; }
 
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
 
-        public DateTime EnrollmentDate { get; set; }
-
         [JsonIgnore]
-        public virtual ICollection<Enrollment> Enrollments { get; set; }
+        public ICollection<Book> Books { get; set; }
     }
 }
